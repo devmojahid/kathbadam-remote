@@ -7,8 +7,8 @@
         {{Session::get('direction') === "rtl" ? 'width: 344px;' : 'width: 331px;'}}
     }
 </style>
-<div class="__inline-9 rtl">
-    <div class="d-flex justify-content-center text-center {{Session::get('direction') === "rtl" ? 'text-md-right' : 'text-md-left'}} mt-3"
+<div class="container __inline-9 rtl">
+    <!-- <div class="d-flex justify-content-center text-center {{Session::get('direction') === "rtl" ? 'text-md-right' : 'text-md-left'}} mt-3"
             style="background: {{$web_config['primary_color']}}10;padding:20px;">
         <div class="col-md-3 d-flex justify-content-center">
             <div >
@@ -60,7 +60,7 @@
         {{-- <div class="col-md-1">
 
         </div> --}}
-    </div>
+    </div> -->
 
     <footer class="page-footer font-small mdb-color rtl">
         <!-- Footer Links -->

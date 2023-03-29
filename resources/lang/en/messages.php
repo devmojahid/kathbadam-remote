@@ -2919,4 +2919,9 @@
   'no_data_found' => 'No data found',
   'google_tag_manager_script_id_from_google' => 'Google tag manager script id from google',
   'Download Generate Sitemap' => 'Download Generate Sitemap',
+  'home_category_status' => 'Home category status',
+  'We are sorry  server is not responding' => 'We are sorry  server is not responding',
+  'Category Logo' => 'Category Logo',
+  'banner' => 'Banner',
+  'banner_URL' => 'Banner URL',
 );

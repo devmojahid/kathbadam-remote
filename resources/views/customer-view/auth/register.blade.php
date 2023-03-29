@@ -103,25 +103,7 @@
                                 </label>
 
                             </div>
-                            {{-- recaptcha --}}
-                            @php($recaptcha = \App\CPU\Helpers::get_business_settings('recaptcha'))
-                            @if(isset($recaptcha) && $recaptcha['status'] == 1)
-                                <div id="recaptcha_element" class="w-100" data-type="image"></div>
-                                <br/>
-                            @else
-                                <div class="row py-2">
-                                    <div class="col-6 pr-2">
-                                        <input type="text" class="form-control border __h-40" name="default_captcha_value" value=""
-                                               placeholder="{{\App\CPU\translate('Enter captcha value')}}" autocomplete="off">
-                                    </div>
-                                    <div class="col-6 input-icons mb-2 w-100 rounded bg-white">
-                                        <a onclick="javascript:re_captcha();" class="d-flex align-items-center align-items-center">
-                                            <img src="{{ URL('/customer/auth/code/captcha/1') }}" class="input-field rounded __h-40" id="default_recaptcha_id">
-                                            <i class="tio-refresh icon cursor-pointer p-2"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            @endif
+                           
                             <div class="flex-between row" style="direction: {{ Session::get('direction') }}">
                                 <div class="mx-1">
                                     <div class="text-right">

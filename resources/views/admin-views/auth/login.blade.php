@@ -113,25 +113,7 @@
                                 </div>
                             </div>
                             <!-- End Checkbox -->
-                            {{-- recaptcha --}}
-                            @php($recaptcha = \App\CPU\Helpers::get_business_settings('recaptcha'))
-                            @if(isset($recaptcha) && $recaptcha['status'] == 1)
-                                <div id="recaptcha_element" class="w-100;" data-type="image"></div>
-                                <br/>
-                            @else
-                                <div class="row p-2">
-                                    <div class="col-6 pr-0">
-                                        <input type="text" class="form-control form-control-lg border-0" name="default_captcha_value" value=""
-                                            placeholder="{{\App\CPU\translate('Enter captcha value')}}" autocomplete="off">
-                                    </div>
-                                    <div class="col-6 input-icons" class="bg-white rounded">
-                                        <a onclick="javascript:re_captcha();">
-                                            <img src="{{ URL('/admin/auth/code/captcha/1') }}" class="input-field w-90 h-75" id="default_recaptcha_id">
-                                            <i class="tio-refresh icon"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            @endif
+                            
 
                             <button type="submit" class="btn btn-lg btn-block btn--primary">{{\App\CPU\translate('sign_in')}}</button>
                         </form>

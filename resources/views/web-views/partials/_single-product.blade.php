@@ -1,9 +1,57 @@
 @php($overallRating = \App\CPU\ProductManager::get_overall_rating($product->reviews))
 
-<div class="product-single-hover" >
-    <div class="overflow-hidden position-relative">
-        <div class=" inline_product clickable d-flex justify-content-center"
-                style="background:{{$web_config['primary_color']}}10;">
+<div class="card product-single-hover">
+  <div class="inline_product clickable d-flex justify-content-center">
+            @if($product->discount > 0)
+                <div class="d-flex">
+                        <span class="for-discoutn-value p-1 pl-2 pr-2"> -
+                        @if ($product->discount_type == 'percent')
+                                {{round($product->discount,(!empty($decimal_point_settings) ? $decimal_point_settings: 0))}}%
+                            @elseif($product->discount_type =='flat')
+                                {{\App\CPU\Helpers::currency_converter($product->discount)}}
+                            @endif
+                            {{\App\CPU\translate('off')}}
+                        </span>
+                </div>
+            @else
+                <div class="d-flex justify-content-end for-dicount-div-null">
+                    <span class="for-discoutn-value-null"></span>
+                </div>
+            @endif
+            <div class="d-flex d-block">
+                <a class="single-product-middle-image" href="{{route('product',$product->slug)}}">
+                    <img src="{{\App\CPU\ProductManager::product_image_path('thumbnail')}}/{{$product['thumbnail']}}"
+                        onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'">
+                </a>
+            </div>
+        </div>
+  <div class="card-body text-center">
+    <div>
+        <a href="{{route('product',$product->slug)}}">
+             {{ Str::limit($product['name'], 23) }}
+          </a>
+    </div>
+    <div class="justify-content-between text-center">
+                <div class="product-price d-flex justify-content-center mt-3">
+                    @if($product->discount > 0)
+                        <strike style="font-size: 12px!important;color: #666666!important;">
+                            {{\App\CPU\Helpers::currency_converter($product->unit_price)}}
+                        </strike><br>
+                    @endif
+                    <span class="text-accent">
+                        {{\App\CPU\Helpers::currency_converter(
+                            $product->unit_price-(\App\CPU\Helpers::get_product_discount($product,$product->unit_price))
+                        )}}
+                    </span>
+                </div>
+            </div>
+    <a href="#" class="btn card-btn-bg-change btn-block mt-3">Buy Now</a>
+  </div>
+</div>
+
+<div class="product-single-hover d-none" >
+    <div class="overflow-hidden">
+        <div class=" inline_product clickable d-flex justify-content-center">
             @if($product->discount > 0)
                 <div class="d-flex">
                         <span class="for-discoutn-value p-1 pl-2 pr-2">
@@ -28,27 +76,15 @@
             </div>
         </div>
         <div class="single-product-details">
-            <div class="text-{{Session::get('direction') === "rtl" ? 'right pr-3' : 'left pl-3'}}">
+            <div class="text-center">
                 <a href="{{route('product',$product->slug)}}">
                     {{ Str::limit($product['name'], 23) }}
                 </a>
             </div>
-            <div class="rating-show justify-content-between text-center">
-                <span class="d-inline-block font-size-sm text-body">
-                    @for($inc=0;$inc<5;$inc++)
-                        @if($inc<$overallRating[0])
-                            <i class="sr-star czi-star-filled active"></i>
-                        @else
-                            <i class="sr-star czi-star" style="color:#fea569 !important"></i>
-                        @endif
-                    @endfor
-                    <label class="badge-style">( {{$product->reviews_count}} )</label>
-                </span>
-            </div>
             <div class="justify-content-between text-center">
-                <div class="product-price text-center">
+                <div class="product-price d-flex justify-content-center mt-3">
                     @if($product->discount > 0)
-                        <strike style="font-size: 12px!important;color: #E96A6A!important;">
+                        <strike style="font-size: 12px!important;color: #666666!important;">
                             {{\App\CPU\Helpers::currency_converter($product->unit_price)}}
                         </strike><br>
                     @endif
