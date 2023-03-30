@@ -19279,7 +19279,8 @@ body{
 }
 .card-btn-bg-change{
     background: #ffb800;
-    color: #fff;
+    color: #000 !important;
+    border-radius: 0 !important;
 }
 
 .letest_product_items{

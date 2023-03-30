@@ -264,69 +264,6 @@
                     </div>
 
                   
-                  
-
-                    <ul class="navbar-nav mega-nav1 pr-2 pl-2 d-block d-xl-none"><!--mobile-->
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle {{Session::get('direction') === "rtl" ? 'pr-0' : 'pl-0'}}"
-                               href="#" data-toggle="dropdown">
-                                <i class="czi-menu align-middle mt-n1 {{Session::get('direction') === "rtl" ? 'ml-2' : 'mr-2'}}"></i>
-                                <span
-                                    style="margin-{{Session::get('direction') === "rtl" ? 'right' : 'left'}}: 20px !important;">{{ \App\CPU\translate('categories')}}</span>
-                            </a>
-                            <ul class="dropdown-menu __dropdown-menu-2"
-                                style="text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}};">
-                                @foreach($categories as $category)
-                                    <li class="dropdown">
-
-                                            <a <?php if ($category->childes->count() > 0) echo ""?>
-                                            href="{{route('products',['id'=> $category['id'],'data_from'=>'category','page'=>1])}}">
-                                            <img src="{{asset("storage/app/public/category/$category->icon")}}"
-                                                 onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"
-                                                 class="__img-18">
-                                            <span
-                                                class="{{Session::get('direction') === "rtl" ? 'pr-3' : 'pl-3'}}">{{$category['name']}}</span>
-
-                                        </a>
-                                        @if ($category->childes->count() > 0)
-                                            <a  data-toggle='dropdown' class='__ml-50px'>
-                                                <i class="czi-arrow-{{Session::get('direction') === "rtl" ? 'left' : 'right'}} __inline-16"></i>
-                                            </a>
-                                        @endif
-
-                                        @if($category->childes->count()>0)
-                                            <ul class="dropdown-menu"
-                                                style="text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}};">
-                                                @foreach($category['childes'] as $subCategory)
-                                                    <li class="dropdown">
-                                                        <a  href="{{route('products',['id'=> $subCategory['id'],'data_from'=>'category','page'=>1])}}">
-                                                            <span
-                                                                class="{{Session::get('direction') === "rtl" ? 'pr-3' : 'pl-3'}}">{{$subCategory['name']}}</span>
-                                                        </a>
-
-                                                        @if($subCategory->childes->count()>0)
-                                                        <a style="font-family:  sans-serif !important;font-size: 1rem;
-                                                            font-weight: 300;line-height: 1.5;margin-left:50px;" data-toggle='dropdown'>
-                                                                <i class="czi-arrow-{{Session::get('direction') === "rtl" ? 'left' : 'right'}} __inline-16"></i>
-                                                            </a>
-                                                            <ul class="dropdown-menu">
-                                                                @foreach($subCategory['childes'] as $subSubCategory)
-                                                                    <li>
-                                                                        <a class="dropdown-item"
-                                                                           href="{{route('products',['id'=> $subSubCategory['id'],'data_from'=>'category','page'=>1])}}">{{$subSubCategory['name']}}</a>
-                                                                    </li>
-                                                                @endforeach
-                                                            </ul>
-                                                        @endif
-                                                    </li>
-                                                @endforeach
-                                            </ul>
-                                        @endif
-                                    </li>
-                                @endforeach
-                            </ul>
-                        </li>
-                    </ul>
                     <!-- Primary menu-->
                     <ul class="navbar-nav" style="{{Session::get('direction') === "rtl" ? 'padding-right: 0px' : ''}}">
                         <li class="nav-item dropdown {{request()->is('/')?'active':''}}">

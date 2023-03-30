@@ -45,7 +45,7 @@
                     </span>
                 </div>
             </div>
-    <a href="#" class="btn card-btn-bg-change btn-block mt-3">Buy Now</a>
+    <button onclick="buy_now()" class="btn card-btn-bg-change btn-block mt-3">Buy Now</button>
   </div>
 </div>
 

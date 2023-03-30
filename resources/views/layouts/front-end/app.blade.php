@@ -466,7 +466,7 @@
 
     function buy_now() {
         addToCart('add-to-cart-form',true);
-        /* location.href = "{{route('checkout-details')}}"; */
+        location.href = "{{route('checkout-details')}}"; 
     }
 
     function currency_change(currency_code) {

@@ -27,7 +27,8 @@ Route::group(['namespace' => 'Web','middleware'=>['maintenance_mode']], function
     Route::get('quick-view', 'WebController@quick_view')->name('quick-view');
     Route::get('searched-products', 'WebController@searched_products')->name('searched-products');
 
-    Route::group(['middleware'=>['customer']], function () {
+    // Route::group(['middleware'=>['customer']], function () {
+
         Route::get('checkout-details', 'WebController@checkout_details')->name('checkout-details');
         Route::get('checkout-shipping', 'WebController@checkout_shipping')->name('checkout-shipping')->middleware('customer');
         Route::get('checkout-payment', 'WebController@checkout_payment')->name('checkout-payment')->middleware('customer');
@@ -42,7 +43,8 @@ Route::group(['namespace' => 'Web','middleware'=>['maintenance_mode']], function
         Route::post('review', 'ReviewController@store')->name('review.store');
         Route::get('deliveryman-review/{id}','ReviewController@delivery_man_review')->name('deliveryman-review');
         Route::post('submit-deliveryman-review','ReviewController@delivery_man_submit')->name('submit-deliveryman-review');
-    });
+        
+    // });
 
     //wallet payment
     Route::get('checkout-complete-wallet', 'WebController@checkout_complete_wallet')->name('checkout-complete-wallet');
